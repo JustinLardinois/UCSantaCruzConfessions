@@ -1,0 +1,82 @@
+<?php
+	session_start();
+	if((isset($_SESSION["ispost"]) && !$_SESSION["ispost"])
+		|| (isset($_SESSION["blank"]) && $_SESSION["blank"])
+		|| (isset($_SESSION["rules"]) && !$_SESSION["rules"])
+		|| isset($_SESSION["invalid_email"]) && $_SESSION["invalid_email"])
+	{
+		header($_SERVER["SERVER_PROTOCOL"] . " 400 Bad Request");
+	}
+?>
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>UC Santa Cruz Confessions</title>
+
+<?php
+	include $_SERVER["DOCUMENT_ROOT"] . "/includes/head.html";
+?>
+
+</head>
+<body>
+
+<header>
+	<?php
+		include $_SERVER["DOCUMENT_ROOT"] . "/includes/header.html";
+	?>
+</header>
+
+<section id="content">
+	<form accept-charset="UTF-8" action="/submit/" autocomplete="off" method="post">
+<?php
+	if(isset($_SESSION["blank"]) && $_SESSION["blank"])
+	{
+		printf("\t\t<p class=\"error\">Your submission was blank.</p>\n");
+	}
+?>		<textarea autofocus name="confession" rows="15" required><?php
+			if(isset($_SESSION["blank"]) && !$_SESSION["blank"])
+			{
+				printf("%s",$_SESSION["confession"]);
+			}
+		?></textarea>
+<?php
+	if(isset($_SESSION["invalid_email"]) && $_SESSION["invalid_email"])
+	{
+		printf("\t\t<p class=\"error\">The email address you entered was invalid.</p>\n");
+	}
+?>		<label>
+			<span>Contact email (optional)<sup><a href="/information-policy.html#email" target="_blank">?</a></sup></span>
+			<input type="email" name="email"<?php
+				if(isset($_SESSION["invalid_email"]) && $_SESSION["invalid_email"])
+				{
+					printf(" value=\"%s\"",$_SESSION["email"]);
+				}
+			?>>
+		</label>
+<?php
+	if(isset($_SESSION["rules"]) && !$_SESSION["rules"])
+	{
+		printf("\t\t<p class=\"error\">Please agree to the rules.</p>\n");
+	}
+?>		<label>
+			<input type="checkbox" name="rules" required>
+			<span>This confession follows the <a href="/rules.html" target="_blank">rules</a>.</span>
+		</label>
+		<button type="submit">Submit Confession</button>
+	</form>
+	
+	<p>UC Santa Cruz Confessions is not affiliated with the University of California in any way, shape, or form.</p>
+</section>
+
+<nav>
+	<?php
+		include $_SERVER["DOCUMENT_ROOT"] . "/includes/nav.html";
+	?>
+</nav>
+
+</body>
+</html><?php
+	session_unset();
+	session_destroy();
+?>

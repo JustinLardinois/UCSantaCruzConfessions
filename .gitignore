@@ -1,0 +1,6 @@
+email/relays/*
+.oldsite
+post/authentication/db/*
+!post/authentication/db/.htaccess
+submit/files/*
+!submit/files/.htaccess

@@ -1,0 +1,26 @@
+<?php
+	session_start();
+	if(!isset($_SESSION["valid"]) || !$_SESSION["valid"])
+	{
+		session_unset();
+		session_destroy();
+		header("Location: http://" . $_SERVER["SERVER_NAME"] . "/post/login.html");
+		exit();
+	}
+	
+	if($_SERVER["REQUEST_METHOD"] == "POST")
+	{
+		if(isset($_POST["filename"]))
+		{
+			$basename = trim($_POST["filename"]);
+			$unread = $_SERVER["DOCUMENT_ROOT"] . "/submit/files/unread/";
+			if(strlen($basename) && file_exists($unread . $basename))
+			{
+				$read = $_SERVER["DOCUMENT_ROOT"] . "/submit/files/read/";
+				rename($unread . $basename , $read . $basename);
+			}
+		}
+	}
+	
+	header("Location: http://" . $_SERVER["SERVER_NAME"] . "/post/");
+?>

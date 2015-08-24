@@ -1,0 +1,51 @@
+<?php
+	$ispost = ($_SERVER["REQUEST_METHOD"] == "POST");
+	$confession = "";
+	$blank = FALSE;
+	$rules = TRUE;
+	$email = trim($_POST["email"]);
+	$invalid_email = FALSE;
+	
+	if($ispost)
+	{
+		if(isset($_POST["confession"])) $confession = trim($_POST["confession"]);
+		$blank = ($confession == "");
+		if(!isset($_POST["rules"]) || !$rules) $rules = FALSE;
+	}
+	
+	$quotes = array("\"","“","”","‘","’");
+	
+	$confession = str_replace($quotes,"'",$confession);
+	$confession = str_replace("&","&amp;",$confession);
+	$confession = str_replace("<","&lt;",$confession);
+	$confession = str_replace(">","&gt;",$confession);
+	
+	if(($email != "") && (filter_var($email,FILTER_VALIDATE_EMAIL) == FALSE)) $invalid_email = TRUE;
+	
+	if(!$ispost || !$rules || $blank || $invalid_email)
+	{
+		session_start();
+		$_SESSION["ispost"] = $ispost;
+		$_SESSION["confession"] = $confession;
+		$_SESSION["blank"] = $blank;
+		$_SESSION["rules"] = $rules;
+		$_SESSION["email"] = $email;
+		$_SESSION["invalid_email"] = $invalid_email;
+		header("Location: http://" . $_SERVER["SERVER_NAME"] . "/");
+		exit();
+	}
+	
+	$confession_filename = time() . "_" . md5($confession);
+	$confession_file = fopen($_SERVER["DOCUMENT_ROOT"] . "/submit/files/unread/" . $confession_filename,"w");
+	fprintf($confession_file,"&quot;%s&quot;",$confession);
+	if($email != "")
+	{
+		$relay_file = fopen($_SERVER["DOCUMENT_ROOT"] . "/email/relays/" . $confession_filename,"w");
+		fprintf($relay_file,"%s",$email);
+		fclose($relay_file);
+		fprintf($confession_file,"\n\nContact this confessor at %s@ucsantacruzconfessions.com",$confession_filename);
+	}
+	fclose($confession_file);
+	
+	header("Location: http://" . $_SERVER["SERVER_NAME"] . "/confession-received.html");
+?>

@@ -1,0 +1,43 @@
+<?php
+	header($_SERVER["SERVER_PROTOCOL"] . " 403 Forbidden");
+?>
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>403 Forbidden - UC Santa Cruz Confessions</title>
+
+<?php
+	include $_SERVER["DOCUMENT_ROOT"] . "/includes/head.html";
+?>
+
+<style type="text/css">
+	p
+	{
+		text-align:center;
+	}
+</style>
+
+</head>
+<body>
+
+<header>
+	<?php
+		include $_SERVER["DOCUMENT_ROOT"] . "/includes/header.html";
+	?>
+</header>
+
+<section id="content">
+	<h1>403 Forbidden</h1>
+	
+	<p>You do not have permission to access the resource you requested. If you think this is incorrect, please email <a href="mailto:administrator@ucsantacruzconfessions.com">administrator@ucsantacruzconfessions.com</a>.</p>
+</section>
+
+<nav>
+	<?php
+		include $_SERVER["DOCUMENT_ROOT"] . "/includes/nav.html";
+	?>
+</nav>
+
+</body>
+</html>

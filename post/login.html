@@ -1,0 +1,92 @@
+<?php
+	session_start();
+	if(isset($_SESSION["valid"]) && !$_SESSION["valid"])
+	{
+		header($_SERVER["SERVER_PROTOCOL"] . " 401 Unauthorized");
+	}
+?>
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Administrator Login - UC Santa Cruz Confessions</title>
+
+<?php
+	include $_SERVER["DOCUMENT_ROOT"] . "/includes/head.html";
+?>
+
+<style type="text/css">
+	form
+	{
+		width:50%;
+		margin:auto;
+		text-align:center;
+	}
+
+	form label
+	{
+		display:table;
+		width:100%;
+		margin-top:2%;
+	}
+
+	form label span
+	{
+		display:table-cell;
+		width:15%;
+	}
+
+	form label input
+	{
+		display:table-cell;
+		width:85%;
+	}
+
+	form button[type="submit"]
+	{
+		margin-top:2%;
+	}
+</style>
+
+</head>
+<body>
+
+<header>
+	<?php
+		include $_SERVER["DOCUMENT_ROOT"] . "/includes/header.html";
+	?>
+</header>
+
+<section id="content">
+	<h1>Administrator Login</h1>
+	
+	<form action="/post/authentication/" autocomplete="off" method="post">
+<?php
+	if(isset($_SESSION["valid"]) && !$_SESSION["valid"])
+	{
+		printf("\t\t<p class=\"error\">Invalid login</p>\n");
+	}
+?>		<label>
+			<span>Username</span><input type="text" name="username" required>
+		</label>
+		<label>
+			<span>Password</span><input type="password" name="password" required>
+		</label>
+		<button type="submit">Login</button>
+	</form>
+</section>
+
+<nav>
+	<?php
+		include $_SERVER["DOCUMENT_ROOT"] . "/includes/nav.html";
+	?>
+</nav>
+
+</body>
+</html><?php
+	if(isset($_SESSION["valid"]) && !$_SESSION["valid"])
+	{
+		session_unset();
+		session_destroy();
+	}
+?>

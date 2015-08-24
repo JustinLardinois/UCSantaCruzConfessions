@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Search - UC Santa Cruz Confessions</title>
+
+<?php
+	include $_SERVER["DOCUMENT_ROOT"] . "/includes/head.html";
+?>
+
+</head>
+<body>
+
+<header>
+	<?php
+		include $_SERVER["DOCUMENT_ROOT"] . "/includes/header.html";
+	?>
+</header>
+
+<section id="content">
+	<h1>Search</h1>
+	<div>
+		<script>
+			(function() {
+				var cx = '002797840689156555429:h0xbfpjhtio';
+				var gcse = document.createElement('script');
+				gcse.type = 'text/javascript';
+				gcse.async = true;
+				gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+					'//www.google.com/cse/cse.js?cx=' + cx;
+				var s = document.getElementsByTagName('script')[0];
+				s.parentNode.insertBefore(gcse, s);
+			})();
+		</script>
+		<gcse:search></gcse:search>
+	</div>
+</section>
+
+<nav>
+	<?php
+		include $_SERVER["DOCUMENT_ROOT"] . "/includes/nav.html";
+	?>
+</nav>
+
+</body>
+</html>

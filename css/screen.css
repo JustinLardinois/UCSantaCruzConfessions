@@ -1,0 +1,204 @@
+@charset "UTF-8";
+
+body
+{
+	width:800px;
+	margin:auto;
+	margin-top:1%;
+	font-family:Arial,Helvetica,sans-serif;
+	margin-bottom:5%;
+}
+
+header
+{
+	margin:auto;
+	font-weight:bold;
+	font-size:200%;
+	width:67%;
+	display:table;
+}
+
+header img
+{
+	display:table-cell;
+}
+
+header span
+{
+	display:table-cell;
+	vertical-align:middle;
+}
+
+h1
+{
+	text-align:center;
+	font-size:175%;
+}
+
+h2
+{
+	font-size:125%;
+	margin-top:3%;
+}
+
+a
+{
+	color:rgb(6,69,173);
+}
+
+a:hover
+{
+	color:rgb(51,102,187);
+	text-decoration:underline;
+}
+
+a:active , a:focus
+{
+	outline-style:dotted;
+	outline-width:1px;
+	outline-color:rgb(0,0,0);
+}
+
+section#content
+{
+	font-size:80%;
+	padding-left:1%;
+	padding-right:1%;
+	width:100%;
+}
+
+section#content>*
+{
+	margin-bottom:1%;
+}
+
+section#content ul , section#content ol
+{
+	margin-left:7%;
+}
+
+section#content ul li , section#content ol li
+{
+	margin-top:1%;
+}
+
+section#content ul li:first-child , section#content ol li:first-child
+{
+	margin-top:0;
+}
+
+section#content ul li
+{
+	list-style-type:disc;
+}
+
+section#content ol li
+{
+	list-style-type:decimal;
+}
+
+form[action="/submit/"]
+{
+	width:100%;
+	text-align:center;
+}
+
+form[action="/submit/"] textarea
+{
+	width:100%;
+	margin:auto;
+	margin-top:1%;
+	margin-bottom:2%;
+	display:block;
+	font-family:"Lucida Grande",Tahoma,Verdana,Arial,sans-serif;
+	font-size:100%;
+}
+
+form[action="/submit/"] label
+{
+	display:table;
+	margin:auto;
+	width:50%;
+}
+
+form[action="/submit/"] label+label
+{
+	display:table;
+	width:27%;
+	margin:auto;
+	margin-top:2%;
+}
+
+form[action="/submit/"] label input[type="email"]
+{
+	width:100%;
+	display:table-cell;
+}
+
+form[action="/submit/"] label input[type="checkbox"]
+{
+	display:table-cell;
+}
+
+form[action="/submit/"] label span
+{
+	vertical-align:middle;
+	display:table-cell;
+}
+
+form[action="/submit/"] button[type="submit"]
+{
+	display:block;
+	margin:auto;
+	margin-top:2%;
+}
+
+form+p
+{
+	text-align:center;
+	margin-top:2%;
+}
+
+form p
+{
+	text-align:center;
+	margin-bottom:1%;
+}
+
+.error
+{
+	color:rgb(231,76,60); /* alizarin from http://flatuicolors.com/ */
+}
+
+label+.error
+{
+	margin-top:2%;
+}
+
+nav
+{
+	width:100%;
+	position:fixed;
+	padding-bottom:1%;
+	bottom:0;
+	left:0;
+	background-color:rgb(255,255,255);
+}
+
+nav ul
+{
+	width:100%;
+	text-align:center;
+}
+
+nav ul li
+{
+	display:inline;
+	margin-left:3%;
+	font-size:80%;
+}
+
+nav ul li:first-child
+{
+	margin-left:0;
+}

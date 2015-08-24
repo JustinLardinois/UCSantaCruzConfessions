@@ -1,0 +1,36 @@
+<?php
+	session_start();
+	if(isset($_SESSION["valid"]) && $_SESSION["valid"])
+	{
+		header("Location: http://" . $_SERVER["SERVER_NAME"] . "/post/");
+		exit();
+	}
+	$_SESSION["valid"] = FALSE;
+	
+	if($_SERVER["REQUEST_METHOD"] == "POST")
+	{
+		if(isset($_POST["username"]) && isset($_POST["password"]))
+		{
+			$username = trim($_POST["username"]);
+			$hash = hash("sha512",trim($_POST["password"]));
+			$record = @fopen($_SERVER["DOCUMENT_ROOT"] . "/post/authentication/db/" . $username,"r");
+			if($record)
+			{
+				$stored = fgets($record);
+				if($stored)
+				{
+					$_SESSION["valid"] = ($stored == $hash);
+				}
+				fclose($record);
+			}
+		}
+	}
+	
+	if(!$_SESSION["valid"])
+	{
+		header("Location: http://" . $_SERVER["SERVER_NAME"] . "/post/login.html");
+		exit();
+	}
+	
+	header("Location: http://" . $_SERVER["SERVER_NAME"] . "/post/");
+?>

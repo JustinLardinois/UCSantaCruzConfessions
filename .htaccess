@@ -1,0 +1,17 @@
+
+RewriteEngine on
+Options All -Indexes
+AddCharset UTF-8 .html
+AddCharset UTF-8 .css
+AddHandler application/x-httpd-php5 .html
+RewriteCond %{HTTP_HOST} ^ucsantacruzconfessions\.justinlardinois\.com$ [OR]
+RewriteCond %{HTTP_HOST} ^www\.ucsantacruzconfessions\.justinlardinois\.com$
+RewriteRule ^(.*)$ "http\:\/\/ucsantacruzconfessions\.com\/$1" [R=301,L]
+
+RewriteCond %{HTTP_HOST} ^www\.ucsantacruzconfessions\.com$
+RewriteRule ^(.*)$ "http\:\/\/ucsantacruzconfessions\.com\/$1" [R=301,L]
+
+ErrorDocument 403 /error/403.html
+ErrorDocument 404 /error/404.html
+
+RewriteCond %{HTTP_USER_AGENT} ^(curl) [NC,OR]
