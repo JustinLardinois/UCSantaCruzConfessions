@@ -21,7 +21,7 @@ much.
 I'm releasing the site's source code under the Apache License. (I
 should've done that when I retired the page, but the thought didn't
 occur to me until recently). The master branch contains the site's code as
-it was when the page was active; the [disabled](../disabled) branch
+it was when the page was active; the [disabled](../../tree/disabled) branch
 reflects the site's current state.
 
 I don't intend to work on this any further, but if you have any questions,
