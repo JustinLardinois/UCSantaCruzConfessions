@@ -1,3 +1,5 @@
+![cyber slug](images/slug.png)
+
 [UC Santa Cruz Confessions](https://www.facebook.com/UCSantaCruzConfessions)
 was a Facebook page that allowed UCSC students to anonymously post
 about ([almost](rules.html)) anything they wanted. I started the page in
