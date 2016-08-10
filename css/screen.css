@@ -202,3 +202,8 @@ nav ul li:first-child
 {
 	margin-left:0;
 }
+
+del
+{
+	text-decoration: line-through !important;
+}
