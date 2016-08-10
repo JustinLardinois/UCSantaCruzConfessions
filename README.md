@@ -4,7 +4,9 @@
 was a Facebook page that allowed UCSC students to anonymously post
 about ([almost](rules.html)) anything they wanted. I started the page in
 December 2012, and within months it grew to over 8,000 likes and averaged
-around one hundred daily submissions. I retired the page in June 2014.
+around one hundred daily submissions. I retired the page in June 2014. In
+August 2016, Facebook deleted the page for having too many violations of the
+Facebook Community Standards.
 
 To protect anonymity, all confessions were posted by the page itself. Early
 on, I collected confessions through Survey Monkey; once the page outgrew
